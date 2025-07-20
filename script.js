@@ -12,3 +12,4 @@ backbtn.addEventListener("click", ()=>{
     catalogue.style.scrollBehavior = "smooth";
     catalogue.scrollLeft -= 1200;
 })
+
