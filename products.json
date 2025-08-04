@@ -1,0 +1,44 @@
+[
+    {
+        "id":1,
+        "name": "Half Leather Sofa 3 Seater",
+        "price": 200,
+        "image": "images/cart1.png"
+    },
+    {
+        "id":2,
+        "name": "Serenity Leather Sofa cum Bed",
+        "price": 300,
+        "image": "images/cart2.png"
+    },
+     {
+        "id":3,
+        "name": "Rivello L Shape Sofa",
+        "price": 350,
+        "image": "images/cart3.png"
+    },
+    {
+        "id":4,
+        "name": "Rivello Leather Sofa 3 Seater",
+        "price": 350,
+        "image": "images/cart4.png"
+    },
+        {
+        "id":5,
+        "name": "Serenity Sofa",
+        "price": 200,
+        "image": "images/cart5.png"
+    },
+        {
+        "id":6,
+        "name": "Single Seater Sofa",
+        "price": 350,
+        "image": "images/cart1.png"
+    },
+        {
+        "id":7,
+        "name": "Single Seater Sofa",
+        "price": 200,
+        "image": "images/cart2.png"
+    }
+]

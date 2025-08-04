@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Cart.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>My Cart</title>
+</head>
+<body>
+    <header>
+    <div class="header-container">
+        <h1 class="header-title">Vintique</h1>
+        <nav class="navbar">
+            <ul class="navlist">
+                <li class="listitems"><a href="AboutUs.html">About Us</a></li>
+                <li class="listitems"><a href="Products.html">Products</a></li>
+                <li class="listitems"><a href="Designers.html">Designers</a></li>
+                <li  class="listitems"><a href=""><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                <div class="icon-cart">
+                <li  class="listitems"><a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <span>0</span>
+                </div>
+                <li  class="listitems"><a href="signup.html"><i class="fa-regular fa-user"></i></a></li>
+            </ul>
+        </nav>
+        <h1 id="page-title">My Cart</h1>
+        <img src="images/CartHeader.jpg">
+    </div>  
+    </header>
+    <div class="cartTab">
+        <div class="listCart">
+            <div class="item">
+                <div class="image">
+                    <img src="images/cart1.png" alt="">
+                </div>
+                <div class="name">
+                    NAME
+                </div>
+                <div class="totalPrice">
+                    $200
+                </div>
+                <div class="quantity">
+                    <span class="minus">-</span>
+                    <span>1</span>
+                    <span class="plus">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        <footer>
+        <p class="copyright">&copy; 2025 Vintique. All Rights Reserved.</p>
+        <ul class="footer-content">
+            <li class="footer-contentitems">FAQ</li>
+            <li class="footer-contentitems">Shipping & Returns</li>
+            <li class="footer-contentitems">Terms & Conditions</li>
+            <li class="footer-contentitems">Privacy Policy</li>
+        </ul>
+    </footer>
+    <script>
+        let listCartHTML = document.querySelector('.listCart');
+        let iconCartSpan = document.querySelector('.icon-cart span')
+        
+        let listProducts = [];
+        let carts = [];
+
+        const addCardToHTML = () => {
+            listCartHTML.innerHTML = '';
+            let totalQuantity = 0;
+            if(carts.length > 0){
+                carts.forEach(cart => {
+                    totalQuantity = totalQuantity + cart.quantity;
+                    let newcart = document.createElement('div');
+                    newcart.classList.add('item');
+                    newcart.dataset.id = cart.product_id;
+                    let positionProduct = listProducts.findIndex((value) => value.id == cart.product_id);
+                    let info = listProducts[positionProduct];
+                    console.log(listProducts);
+                    console.log(info);
+                    console.log(positionProduct)
+                    newcart.innerHTML = `
+                    <div class="image">
+                    <img src="${info.image}" alt="">
+                    </div>
+                    <div class="name">
+                    ${info.name}
+                    </div>
+                    <div class="totalPrice">
+                        $${info.price * cart.quantity}
+                    </div>
+                    <div class="quantity">
+                        <span class="minus"><</span>
+                        <span>${cart.quantity}</span>
+                        <span class="plus">></span>
+                    </div>
+                    `;
+                    listCartHTML.appendChild(newcart);
+                })
+            }
+            iconCartSpan.innerHTML = totalQuantity;
+        }
+
+        listCartHTML.addEventListener('click', (event) => {
+            let Positionclick = event.target;
+            if(Positionclick.classList.contains('minus') || Positionclick.classList.contains('plus')){
+                let product_id = Positionclick.parentElement.parentElement.dataset.id;
+                let type = 'minus';
+                if(Positionclick.classList.contains('plus')){
+                    type = 'plus';
+                }
+                changeQuantity(product_id, type);
+            }
+        })
+
+        const changeQuantity = (product_id, type) => {
+            let positionItemInCart = carts.findIndex((value) => value.product_id == product_id);
+            if(positionItemInCart >= 0){
+                switch(type){
+                    case 'plus':
+                        carts[positionItemInCart].quantity = carts[positionItemInCart].quantity + 1;
+                        break;
+                    default:
+                        let valueChange = carts[positionItemInCart].quantity -1;
+                        if(valueChange > 0){
+                            carts[positionItemInCart].quantity = valueChange;
+                        }
+                        else{
+                            carts.splice(positionItemInCart, 1);
+                        }
+                        break;
+                }
+            }
+            addCartToMemory();
+            addCardToHTML();
+        }
+        const addCartToMemory = () => {
+            localStorage.setItem('cart', JSON.stringify(carts));
+        }
+
+        const initApp = () => {
+            fetch('products.json')
+            .then(response => response.json())
+            .then(data => {
+                listProducts = data;
+
+                if(localStorage.getItem('cart')){
+                    carts = JSON.parse(localStorage.getItem('cart'));
+                    addCardToHTML();
+                }
+            })
+        }
+        initApp();
+    </script>
+</body>
+</html>

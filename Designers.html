@@ -16,9 +16,11 @@
                 <li class="listitems"><a href="AboutUs.html">About Us</a></li>
                 <li class="listitems"><a href="#">Products</a></li>
                 <li class="listitems"><a href="Designers.html">Designers</a></li>
-                <li class="listitems"><a href="#">Showroom</a></li>
                 <li  class="listitems"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                <li  class="listitems"><a href="#"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <div class="icon-cart">
+                    <li  class="listitems"><a href="Cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <span>0</span>
+                </div>
                 <li  class="listitems"><a href="signup.html"><i class="fa-regular fa-user"></i></a></li>
             </ul>
         </nav>
@@ -91,6 +93,22 @@
             <li class="footer-contentitems">Privacy Policy</li>
         </ul>
     </footer>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const iconCartSpan = document.querySelector('.icon-cart span');
+        let totalQuantity = 0;
+
+        if (localStorage.getItem('cart')) {
+            const carts = JSON.parse(localStorage.getItem('cart'));
+            carts.forEach(cart => {
+                totalQuantity += cart.quantity;
+            });
+        }
+
+        if (iconCartSpan) {
+            iconCartSpan.innerText = totalQuantity;
+        }
+    });
+    </script>
 </body>
 </html>
