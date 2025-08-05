@@ -20,16 +20,16 @@
     height:500px;
 }
 .profile-container{
-    display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 .profile-wrapper{
-    width:400px;
-    flex:1;
+    overflow: hidden;
+    min-width: 0;
     text-align: center;
     background-color: rgba(230, 224, 224, 0.863);
     border-radius: 10%;
     border: 10px solid rgb(248, 243, 243);
-    margin: 10px;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -37,16 +37,16 @@
     padding-bottom: 10px;
 }
 .profile-wrapper img{
-    width:250px;
-    height:350px;
+    width:100%;
     padding:10px;
     border-radius: 10%;
+    height: auto;
 }
 .profile{
     background-color: rgb(255, 255, 255);
     color:rgb(82, 82, 82);
     border-radius: 20px;
-    width:250px;
+    width:100%;
     padding:5px;
     display:flex;
 }

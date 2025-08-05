@@ -60,3 +60,51 @@
     border: none;
     margin-top: 10px;
 }
+@media screen and (max-width:1024px){
+    #page-title{
+        top:10%;
+        left:20%;
+    }
+    .header-container > p{
+        top:15%;
+        left:35%;
+    }
+}
+@media screen and (max-width:992px) {
+    .listProduct{
+        grid-template-columns: repeat(3, 1fr);
+    }
+        #page-title{
+        top:10%;
+        left:20%;
+    }
+    .header-container > p{
+        top:15%;
+        left:35%;
+    }
+}
+@media screen and (max-width:768px) {
+    .listProduct{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #page-title{
+        top:10%;
+        left:10%;
+    }
+    .header-container > p{
+        top:15%;
+        left:35%;
+    }
+    @media screen and (max-width:425px){
+    #page-title{
+        font-size: large;
+        top:10%;
+        left:10%;
+    }
+    .header-container > p{
+        top:15%;
+        left:20%;
+        font-size: medium;
+    }
+}
+}
