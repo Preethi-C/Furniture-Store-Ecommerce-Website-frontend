@@ -6,7 +6,7 @@ Vintique is a clean and modern furniture e-commerce website frontend built using
 
 ## Live Demo
 
-Coming soon...
+[Click here to view the live site](https://furniture-store-ecommerce-website-frontend-ai0kso7ld.vercel.app/)
 
 ---
 
