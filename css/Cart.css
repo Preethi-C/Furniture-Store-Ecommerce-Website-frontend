@@ -60,3 +60,29 @@
 .listCart::-webkit-scrollbar{
     width: 0;
 } 
+@media screen and (max-width:1024px){
+    .cartTab .listCart .item{
+        grid-template-columns: 200px auto auto auto;
+    }
+    #page-title{
+        top:15%;
+        left: 30%;
+    }
+}
+@media screen and (max-width:768px){
+    .cartTab .listCart .item{
+        grid-template-columns: 200px auto auto auto;
+    }
+    #page-title{
+        top:80px;
+        left: 30%;
+    }
+}
+@media screen and (max-width:425px){
+    .cartTab .listCart .item{
+        grid-template-columns: auto auto auto auto;
+    }
+    #page-title{
+        top:80px;
+    }
+}
